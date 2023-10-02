@@ -1,0 +1,200 @@
+{
+  "discounts": [
+    {
+      "date": "18:8, 6.8.2023",
+      "name": "Рол тижня",
+      "title": "roll-of-the-week",
+      "description": "Кожного тижня акційний рол",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fdiscount-roll-of-week.jpg?alt=media&token=45365370-52ed-400e-b58b-f21b8feb6b22",
+      "id": 1
+    },
+    {
+      "date": "18:26, 6.8.2023",
+      "name": "День народження з моносуші",
+      "title": "birthday-with-monosushi",
+      "description": "Акційні роли на день народження",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fdiscount-birthday-monosushi.jpg?alt=media&token=ac2b7c57-8ecb-46b1-8fe5-b857c9c9b6ea",
+      "id": 2
+    },
+    {
+      "date": "12:11, 3.8.2023",
+      "name": "\"3+1 = 5\"",
+      "title": "kozhen-pyatyj-rol-v-podarunok",
+      "description": "Замовляйте 5 ролів, а платіть за 4.\nЗамовляйте 10 ролів, а платіть за 8 і так далі.\nБезкоштовним вважається рол з найменшою вартістю.\nЦя акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fimgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg?alt=media&token=eea8f450-2bdb-4809-a922-1b305960d1d9",
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "name": "Роли",
+      "path": "roll",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=7d7e0996-054b-498d-b72c-edbf7d8143a8",
+      "id": 1
+    },
+    {
+      "name": "Напої",
+      "path": "drinks",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-drinks.svg?alt=media&token=92236fc4-b5e0-4ed1-b5b7-38c4e3d6d082",
+      "id": 2
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-sets.svg?alt=media&token=076c6ffe-abb8-45a9-b95b-6a1681e68fc1",
+      "id": 3
+    },
+    {
+      "name": "Соуси",
+      "path": "souce",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Ficon.svg?alt=media&token=69837042-6f1b-4984-a15d-17dff33452a8",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "name": "Каліфорнія",
+      "category": {
+        "name": "Роли",
+        "path": "roll",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=7d7e0996-054b-498d-b72c-edbf7d8143a8",
+        "id": 1
+      },
+      "path": "california",
+      "ingredients": "Рис,крем сир,лосось",
+      "weight": "160",
+      "price": 260,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2F1.-filadelfiya-z-lososem.jpg?alt=media&token=77d2078e-1d09-45d3-92e5-118747999a9a",
+      "id": 1,
+      "count": 1
+    },
+    {
+      "name": "Філадельфія в кунжуті",
+      "category": {
+        "name": "Роли",
+        "path": "roll",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=7d7e0996-054b-498d-b72c-edbf7d8143a8",
+        "id": 1
+      },
+      "path": "philadelphia-in-sesame",
+      "ingredients": "Рис, крем сир, огірок, лосось, кунжут",
+      "weight": "240",
+      "price": 258,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2F2.-filadelfiya-v-kunzhuti.jpg?alt=media&token=5f70255d-9a03-4e98-8174-bd20a88a493f",
+      "id": 2,
+      "count": 1
+    },
+    {
+      "name": "Макі з авокадо",
+      "category": {
+        "name": "Роли",
+        "path": "roll",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-rolls.svg?alt=media&token=7d7e0996-054b-498d-b72c-edbf7d8143a8",
+        "id": 1
+      },
+      "path": "maki-avocado",
+      "ingredients": "Рис, норі, авокадо, унагі соус",
+      "weight": "120",
+      "price": 139,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2F2.-maki-z-avokado.jpg?alt=media&token=f3cc2a8d-a4bb-4eda-a055-411a717c78ac",
+      "id": 3,
+      "count": 1
+    },
+    {
+      "name": "Coca cola",
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-drinks.svg?alt=media&token=92236fc4-b5e0-4ed1-b5b7-38c4e3d6d082",
+        "id": 2
+      },
+      "path": "coca-cola-2",
+      "ingredients": " ",
+      "weight": "0.33",
+      "price": 31,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcola2.jpg?alt=media&token=aef73efe-9ea7-47d2-a13f-176f44cff943",
+      "id": 4,
+      "count": 1
+    },
+    {
+      "name": "Запечений сет",
+      "category": {
+        "name": "Сети",
+        "path": "sets",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-sets.svg?alt=media&token=076c6ffe-abb8-45a9-b95b-6a1681e68fc1",
+        "id": 3
+      },
+      "path": "bbq-roll",
+      "ingredients": "Запечений сирний з креветкою Запечений моно з лососем",
+      "weight": "680",
+      "price": 590,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fkaliforniya-scaled.jpg?alt=media&token=dc342dab-3280-400f-898e-abee973a8968",
+      "id": 5,
+      "count": 1
+    },
+    {
+      "name": "Сет Каліфорнія",
+      "category": {
+        "name": "Сети",
+        "path": "sets",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-sets.svg?alt=media&token=076c6ffe-abb8-45a9-b95b-6a1681e68fc1",
+        "id": 3
+      },
+      "path": "set-kunzhutnyj",
+      "ingredients": "Каліфорнія: з лососем / з креветкою / з крабом / з вугрем",
+      "weight": "1000",
+      "price": 1015,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Froll-set.jpg?alt=media&token=3e610cbc-2d20-4bbc-bcd2-88349ea25764",
+      "count": 1,
+      "id": 6
+    },
+    {
+      "name": "Соєвий соус",
+      "category": {
+        "name": "Соуси",
+        "path": "souce",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Ficon.svg?alt=media&token=69837042-6f1b-4984-a15d-17dff33452a8",
+        "id": 4
+      },
+      "path": "soyevyj-sous",
+      "ingredients": " ",
+      "weight": "150",
+      "price": "24",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2F22334.jpg?alt=media&token=2cf4fbda-2e1f-4dc8-8685-b1185528b658",
+      "count": 1,
+      "id": 7
+    },
+    {
+      "name": "Сік мультивітамін “Sandora”",
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fcategory%2Fnav-img-drinks.svg?alt=media&token=92236fc4-b5e0-4ed1-b5b7-38c4e3d6d082",
+        "id": 2
+      },
+      "path": "sik-multyfruktovyj-galicia-1-l",
+      "ingredients": " ",
+      "weight": "1",
+      "price": "75",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-2.appspot.com/o/images%2Fsandora-multyvitamin.png.pagespeed.ce.CIGv89dRMP.png?alt=media&token=941be887-1995-485e-a0b3-f32b265d234d",
+      "count": 1,
+      "id": 8
+    }
+  ],
+  "authorization": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "12345678",
+      "fullName": "ivan Ivanov",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "87654321",
+      "fullName": "Oleg St",
+      "role": "USER"
+    }
+  ]
+}
