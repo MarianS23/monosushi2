@@ -1,1 +1,11 @@
-<p>cabinet works!</p>
+<div class="spacer-md"></div>
+<div class="content">
+    <div class="left">
+        <input type="button" class="blogsBtn" value="Особисті дані" [routerLink]="[ 'cabinet-pers-info' ]" routerLinkActive="admin-active">
+        <input type="button" class="blogsBtn" value="Замовлення" [routerLink]="[ 'cabinet-orders' ]" routerLinkActive="admin-active">
+        <input type="button" class="blogsBtn" value="Вийти" (click)="logOut()">
+    </div>
+    <div class="right">
+        <router-outlet></router-outlet>
+    </div>
+</div>

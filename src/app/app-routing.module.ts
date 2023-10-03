@@ -8,11 +8,16 @@ import { DiscountComponent } from './pages/discount/discount.component';
 import { DiscountInfoComponent } from './components/discount-info/discount-info.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
-import { CabinetComponent } from './pages/cabinet/cabinet.component';
+
 import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ModalBasketComponent } from './components/modal-basket/modal-basket.component';
 import { ModalSigninComponent } from './components/modal-signin/modal-signin.component';
+
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { CabinetOrdersComponent } from './pages/cabinet/cabinet-orders/cabinet-orders.component';
+import { CabinetPersInfoComponent } from './pages/cabinet/cabinet-pers-info/cabinet-pers-info.component';
+
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
@@ -27,7 +32,13 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'authorization', component: AuthorizationComponent },
-  { path: 'cabinet', component: CabinetComponent },
+  {
+    path: 'cabinet', component: CabinetComponent, children: [
+      { path: 'cabinet-orders', component: CabinetOrdersComponent },
+      { path: 'cabinet-pers-info', component: CabinetPersInfoComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'cabinet-pers-info'}
+    ]
+  },
   { path: 'delivery', component: DeliveryAndPaymentComponent },
   { path: 'discount', component: DiscountComponent },
   { path: 'discount/:id', component: DiscountInfoComponent },

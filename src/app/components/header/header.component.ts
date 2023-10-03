@@ -12,9 +12,12 @@ import { ToastrService } from 'ngx-toastr';
 
 import { Role } from 'src/app/shared/constants/role.constants';
 import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { Firestore, docData} from '@angular/fire/firestore';
-import { doc, setDoc } from 'firebase/firestore';
+import { Firestore, docData } from '@angular/fire/firestore';
+import { setDoc,doc } from 'firebase/firestore';
+
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalCallbackComponent } from '../modal-callback/modal-callback.component';
 
 
 
@@ -52,7 +55,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private router: Router,
     private auth: Auth,
     private afs: Firestore,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -71,6 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.loginFirebase(email, password).then(() => {
       this.toastr.success('login succes')
     }).catch(e => {
+      console.log(e)
       this.toastr.error(e);
     })
 
@@ -98,7 +103,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.switchToLogIn();
 
     }).catch(e => {
-      
+
       this.toastr.error(e);
     })
     this.registerForm.reset();
@@ -115,7 +120,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       address: '',
       role: 'USER'
     }
-    setDoc(doc(this.afs, 'users', credential.user.uid),newUser)
+    setDoc(doc(this.afs, 'users', credential.user.uid), newUser)
     console.log('create', credential)
   }
   checkUserLogin(): void {
@@ -253,7 +258,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   };
 
 
-
+  openDialog() {
+    this.dialog.open(ModalCallbackComponent, {
+      panelClass: 'callback-modal',
+      backdropClass: 'modal-container',
+      autoFocus: false
+    });
+  }
 
 
 

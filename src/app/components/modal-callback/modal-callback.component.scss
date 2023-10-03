@@ -1,26 +1,51 @@
-.modal-container {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color:rgba(0, 0, 0, 0.463);
-    z-index: 999;
-    
+@import '../../shared/styles/variables.scss';
+*{
+    border-radius: 30px;
 }
-
 .modal{
-    display: block;
-    z-index: 10;
-    width: 550px;
-    height: 450px;
-    border: 1px solid black;
-    background-color: white;
-    position: absolute;
-    margin: 0 auto;
-    top: 50px;
-    left: 0;
-    right: 0;
-    text-align: center; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        margin-bottom: 30px;
+    }
+    h4{
+        margin-bottom: 10px;
+    }
+
+    input{
+        width: 80%;
+        height: 50px;
+        border-radius: 10px;
+        border: 1px solid rgb(165, 165, 165);
+        padding-left: 10px;
+        margin: 5px 0;
+        &:focus{
+            outline: 1px solid $blueColor;
+        }
+    }
+    .submit-btn{
+        width: 80%;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: 2px solid transparent;
+        background-color: $blueColor;
+        &:hover{
+            border-color: $blueColor;
+            background-color: white;
+        }
+        &:disabled{
+            background-color: #c4def6;
+            &:hover{
+                border: none;
+                
+            }
+        }
+    }
 }

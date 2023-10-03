@@ -28,13 +28,19 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
 import { DiscountInfoComponent } from './components/discount-info/discount-info.component';
 
-import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule  } from 'ngx-toastr';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { provideAuth,getAuth } from '@angular/fire/auth'
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CabinetPersInfoComponent } from './pages/cabinet/cabinet-pers-info/cabinet-pers-info.component';
+import { CabinetOrdersComponent } from './pages/cabinet/cabinet-orders/cabinet-orders.component';
+
 
 
 @NgModule({
@@ -59,7 +65,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth'
     AdminProductComponent,
     ItemCardComponent,
     ProductInfoComponent,
-    DiscountInfoComponent
+    DiscountInfoComponent,
+    CabinetPersInfoComponent,
+    CabinetOrdersComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +78,11 @@ import { provideAuth,getAuth } from '@angular/fire/auth'
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    provideFirestore(()=>getFirestore()),
-    provideAuth(()=>getAuth()),
-    ToastNoAnimationModule.forRoot()
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    ToastNoAnimationModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

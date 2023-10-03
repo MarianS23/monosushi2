@@ -1,0 +1,111 @@
+@import '../../../shared/styles/variables.scss';
+
+.wrapper{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pers-info{
+    border: none;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding-right: 2px;
+    
+    
+    .section{
+        width: 40px;
+        height: 40px;
+        background-color: $blueColor;
+        border-radius: 10px;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+        align-self: flex-start;
+    }
+    .text-block{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .sect-block{
+        width: 80%;
+        display: flex;
+        justify-content: flex-start;
+        margin: 15px 0;
+        span{
+            margin-right: 20px;
+        }
+        h1{
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 40px;
+            color: black;
+        }
+        
+    }
+
+    input{
+        border-radius: 10px;
+        border: 1px solid rgb(165, 165, 165);
+        padding-left: 10px;
+        margin: 5px 0;
+        &:focus{
+            outline: 1px solid $blueColor;
+        }
+    }
+    .name,
+    .surname,
+    .password,
+    .password{
+        width: 49%;
+        height: 50px;
+        float: right;
+    }
+    .phone,
+    .email{
+        width: 80%;
+        height: 50px;
+    }
+
+
+.btnBlock{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .btn{
+        width: 40%;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: 2px solid transparent;
+        background-color: $blueColor;
+        cursor: pointer;
+        &:hover{
+            border-color: $blueColor;
+            background-color: white;
+        }
+        &:disabled{
+            background-color: #c4def6;
+            &:hover{
+                border: none;
+                
+            }
+        }
+    }
+}
+    
+}

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import './app/shared/styles/variables.scss';
+@import'./app/shared/styles/theme-material';
 @import 'ngx-toastr/toastr';
 * {
     box-sizing: border-box;
@@ -32,3 +33,5 @@ body::-webkit-scrollbar {
     background-color: $blueColor;    /* color of the scroll thumb */
     border-radius: 20px;       /* roundness of the scroll thumb */
   }
+
+
