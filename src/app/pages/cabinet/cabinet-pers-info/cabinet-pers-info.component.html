@@ -1,15 +1,15 @@
 <div class="wrapper">
-    <form class="pers-info">
+    <form class="pers-info" [formGroup]="userProfileForm">
         <div class="sect-block">
             <span class="section">1</span>
             <h1>Особисті дані</h1>
         </div>
         <div class="text-block">
-            <input type="text" class="name" placeholder="Ваше імя">
-            <input type="text" class="surname" placeholder="Ваше прізвище">
+            <input type="text" formControlName="name" name="name" class="name" placeholder="Ваше імя">
+            <input type="text" formControlName="surname" name="surname" class="surname" placeholder="Ваше прізвище">
         </div>
-        <input type="text" class="phone" placeholder="Ваше телефон">
-        <input type="text" class="email" placeholder="Email">
+        <input type="text" formControlName="phone" name="phone" class="phone" placeholder="Ваше телефон">
+        <input type="text" formControlName="email" name="email" class="email" placeholder="Email">
         <div class="sect-block">
             <span class="section">2</span>
             <h1>Додати адресу</h1>

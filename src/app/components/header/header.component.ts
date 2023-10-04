@@ -13,11 +13,12 @@ import { ToastrService } from 'ngx-toastr';
 import { Role } from 'src/app/shared/constants/role.constants';
 import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Firestore, docData } from '@angular/fire/firestore';
-import { setDoc,doc } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCallbackComponent } from '../modal-callback/modal-callback.component';
+import { matchPassword } from 'src/app/shared/validators/confirm-password.validator';
 
 
 
@@ -34,10 +35,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public clickBurger: boolean = false;
   public clickSignIn: boolean = false;
   public clickRegister: boolean = true;
-  public isGuest: boolean = false;
-  public isAdmin: boolean = false;
+  public islogin: boolean = false;
   public userUrl = '';
   public userName = '';
+  public userRole = '';
   public totalPrice = 0;
   public totalCount = 0;
   public orders: Array<IProductResponce> = [];
@@ -83,7 +84,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.closeSignInModal();
   }
 
-
   async loginFirebase(email: string, password: string): Promise<any> {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
     this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
@@ -95,51 +95,58 @@ export class HeaderComponent implements OnInit, OnDestroy {
     })
   }
 
+
   register() {
-    const { email, password } = this.registerForm.value;
-    this.userRegister(email, password).then(() => {
+    const { email, password, name, surname, phone } = this.registerForm.value;
+    this.registerFirebase(email, password, name, surname, phone).then(() => {
       this.toastr.success('login succes');
       this.openSignInModal();
       this.switchToLogIn();
-
     }).catch(e => {
-
       this.toastr.error(e);
     })
     this.registerForm.reset();
   }
 
-  async userRegister(email: string, password: string): Promise<any> {
+
+  async registerFirebase(email: string,
+    password: string,
+    name: string,
+    surname: string,
+    phone: string): Promise<any> {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const newUser = {
       email: credential.user.email,
-      firstName: '',
-      lastName: '',
-      phone: '',
+      firstName: name,
+      lastName: surname,
+      phone: phone,
       orders: [],
       address: '',
       role: 'USER'
     }
     setDoc(doc(this.afs, 'users', credential.user.uid), newUser)
-    console.log('create', credential)
   }
   checkUserLogin(): void {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') as string)
     if (currentUser && currentUser.role === Role.ADMIN) {
-      this.isAdmin = true;
+      this.islogin = true;
       this.userUrl = 'admin';
-      this.userName = 'Admin';
+      this.userName = `${currentUser.firstName} ${currentUser.lastName}`;
+      this.userRole = 'Admin';
       this.router.navigate(['/' + this.userUrl])
     } else if (currentUser && currentUser.role === Role.USER) {
-      this.isGuest = true;
+      this.islogin = true;
       this.userUrl = 'cabinet';
-      this.userName = currentUser.fullName;
+      this.userName = `${currentUser.firstName} ${currentUser.lastName}`;
+      this.userRole = 'Guest';
+      // this.userName = currentUser.fullName;
       this.router.navigate(['/' + this.userUrl])
     } else {
-      this.isGuest = false;
-      this.isAdmin = false;
+      // this.isGuest = false;
+      this.islogin = false;
       this.userUrl = '/';
       this.userName = '';
+      this.userRole = '';
       this.router.navigate(['/' + this.userUrl])
     }
   }
@@ -159,13 +166,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   initRegisterForm(): void {
     this.registerForm = this.fb.group({
-      name: [null],
-      surname: [null],
-      phone: [null],
-      email: [null, [Validators.required, Validators.email]],
+      name: [null, [Validators.required]],
+      surname: [null, [Validators.required]],
+      phone: [null, [Validators.required]],
+      email: [null, [Validators.required]],
       password: [null, [Validators.required]],
       repeatPassword: [null]
-    })
+    },
+      {
+        validators: [matchPassword()]
+      })
   }
 
 
@@ -246,10 +256,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   switchToRegister() {
+    this.authForm.reset();
     this.clickRegister = false;
+    
   }
   switchToLogIn() {
+    this.registerForm.reset();
     this.clickRegister = true;
+    
   }
 
 

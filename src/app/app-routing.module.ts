@@ -17,7 +17,7 @@ import { ModalSigninComponent } from './components/modal-signin/modal-signin.com
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import { CabinetOrdersComponent } from './pages/cabinet/cabinet-orders/cabinet-orders.component';
 import { CabinetPersInfoComponent } from './pages/cabinet/cabinet-pers-info/cabinet-pers-info.component';
-
+import { CabinetPasswordComponent } from './pages/cabinet/cabinet-password/cabinet-password.component';
 
 import { AdminComponent } from './admin/admin.component';
 import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
@@ -36,6 +36,7 @@ const routes: Routes = [
     path: 'cabinet', component: CabinetComponent, children: [
       { path: 'cabinet-orders', component: CabinetOrdersComponent },
       { path: 'cabinet-pers-info', component: CabinetPersInfoComponent },
+      { path: 'cabinet-password', component: CabinetPasswordComponent },
       { path: '', pathMatch: 'full', redirectTo: 'cabinet-pers-info'}
     ]
   },

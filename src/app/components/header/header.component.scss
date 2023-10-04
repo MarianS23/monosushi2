@@ -1,5 +1,7 @@
 @import '../../shared/styles/variables.scss';
 
+
+
 .header {
     max-width: 1920px;
     height: 95px;
@@ -211,10 +213,9 @@
         border: 2px solid $blueColor;
     }
 }
-.header-sign-in-admin,
-.header-sign-in-guest{
+.header-sign-in-login{
     width: fit-content;
-    height: 30px;
+    height: fit-content;
     font-size: 14px;
     text-align: center;
     margin-right: auto;
@@ -412,7 +413,12 @@
                 }
             }
         }
+        
     }
+}
+
+.wrong-password{
+    outline: 1px solid red;
 }
 
 

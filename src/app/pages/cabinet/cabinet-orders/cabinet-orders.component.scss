@@ -1,0 +1,78 @@
+@import'../../../shared/styles/variables.scss';
+
+.wrapper{
+    width: 100%;
+    height: fit-content;
+}
+
+.tableBlock {
+    width: 100%;
+    height: fit-content;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.order{
+    border-top: 2px solid $blueColor;
+}
+
+.tableBlock table {
+    width: 100%;
+    height: fit-content;
+    border-collapse: collapse;
+}
+
+.tableBlock table thead tr {
+    height: 35px;
+    width: 100%;
+}
+
+
+
+.tableBlock table thead tr th {
+    border-bottom: 2px solid $blueColor;
+    text-align: start;
+    width: 15%;
+    font-weight: normal;
+}
+
+.tableBlock table tbody tr {
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+
+.tableBlock table tbody tr th {
+    height: 45px;
+    text-align: start;
+    max-width: 15%;
+}
+.action-block{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    .action-btn{
+        width: fit-content;
+        background-color: white;
+        border: none;
+        color: $blueColor;
+        margin: 3px;
+        font: inherit;
+        font-weight: 600;
+        &:hover{
+            color: #5caff8;
+        }
+    }
+}
+
+.order-item{
+    th{
+        font-weight: normal;
+    }
+}

@@ -40,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CabinetPersInfoComponent } from './pages/cabinet/cabinet-pers-info/cabinet-pers-info.component';
 import { CabinetOrdersComponent } from './pages/cabinet/cabinet-orders/cabinet-orders.component';
+import { CabinetPasswordComponent } from './pages/cabinet/cabinet-password/cabinet-password.component';
 
 
 
@@ -67,7 +68,8 @@ import { CabinetOrdersComponent } from './pages/cabinet/cabinet-orders/cabinet-o
     ProductInfoComponent,
     DiscountInfoComponent,
     CabinetPersInfoComponent,
-    CabinetOrdersComponent
+    CabinetOrdersComponent,
+    CabinetPasswordComponent
   ],
   imports: [
     BrowserModule,
