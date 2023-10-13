@@ -19,7 +19,7 @@ export class authorizationGuard implements CanActivate{
     if(currentUser && (currentUser.role === Role.ADMIN || currentUser.role === Role.USER )){
       return true;
     }
-    this.router.navigate([''])
-    return false;
+    this.router.navigate(['/'])
+    return true;
   }
 }

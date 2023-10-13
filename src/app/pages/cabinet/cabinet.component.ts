@@ -19,7 +19,6 @@ ngOnInit(): void {
 logOut(){
   this.router.navigate(['/']);
   localStorage.removeItem('currentUser');
-  localStorage.removeItem('userProfile');
   this.accountService.checkUserLogin$.next(true);
 }
   
