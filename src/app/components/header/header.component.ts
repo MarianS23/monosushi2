@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { IProductResponce } from 'src/app/shared/interface/common.interface';
 
@@ -69,7 +69,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.checkUpdateUserLogin();
   }
   ngOnDestroy(): void {
-    this.loginSubscription.unsubscribe();
+    if(this.loginSubscription){
+      this.loginSubscription.unsubscribe();
+    }
+    
   }
   login(): void {
     const { email, password } = this.authForm.value;
@@ -279,8 +282,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
       autoFocus: false
     });
   }
-
-
-
 
 }

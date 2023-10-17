@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CabinetComponent } from './cabinet.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CabinetComponent', () => {
   let component: CabinetComponent;
@@ -8,7 +10,14 @@ describe('CabinetComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CabinetComponent]
+      declarations: [
+        CabinetComponent
+
+      ],
+      imports:[
+        HttpClientTestingModule,
+        RouterTestingModule
+      ]
     });
     fixture = TestBed.createComponent(CabinetComponent);
     component = fixture.componentInstance;

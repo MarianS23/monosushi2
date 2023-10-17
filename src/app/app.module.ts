@@ -10,9 +10,9 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ModalBasketComponent } from './components/modal-basket/modal-basket.component';
+
 import { ModalCallbackComponent } from './components/modal-callback/modal-callback.component';
-import { ModalSigninComponent } from './components/modal-signin/modal-signin.component';
+
 
 import { ProductComponent } from './pages/product/product.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
@@ -23,8 +23,9 @@ import { environment } from '../environments/environment';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import{SharedModule} from './shared/modules/shared.module'
+import { SharedModule } from './shared/modules/shared.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -39,14 +40,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AboutUsComponent,
     DeliveryAndPaymentComponent,
     HomeComponent,
-    ModalBasketComponent,
     ModalCallbackComponent,
-    ModalSigninComponent,
     ItemCardComponent,
     ProductComponent,
     ProductInfoComponent,
   ],
   imports: [
+    
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -58,6 +58,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provideAuth(() => getAuth()),
     ToastNoAnimationModule.forRoot(),
     SharedModule
+  ],
+  exports:[
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

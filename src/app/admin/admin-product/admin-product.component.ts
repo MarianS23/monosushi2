@@ -125,7 +125,6 @@ export class AdminProductComponent {
 
   changeCategory(categoryElem:any):void{
     this.currentCategoryID = categoryElem.value;
-    console.log(categoryElem.value)
   }
 
 
