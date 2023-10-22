@@ -28,7 +28,9 @@ private eventSubscription!:Subscription;
         }
       })
     }
-    ngOnInit(): void {}
+    ngOnInit(): void {
+      this.getProducts();
+    }
     ngOnDestroy(): void {
       this.eventSubscription.unsubscribe()
     }
@@ -36,10 +38,11 @@ private eventSubscription!:Subscription;
     public currentName!:string;
     
     
+  
     getProducts() {
       const currentCategory = this.activatedRoute.snapshot.paramMap.get('category') as string
-      return this.productService.getAllByCategory(currentCategory).subscribe(data => {
-        this.products = data;
+      return this.productService.getProductsByCategoryFirebase(currentCategory).then(data => {
+        this.products = data.products;
         this.currentName = this.products[0].category.name
       })
     }

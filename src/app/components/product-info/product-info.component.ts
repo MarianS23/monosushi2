@@ -25,9 +25,9 @@ export class ProductInfoComponent implements OnInit {
   }
 
   getCurrentProd(): void {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.productService.getOne(id).subscribe(data => {
-      this.currentProduct = data;
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.productService.getOneFirebase(id as string).subscribe(data => {
+      this.currentProduct = data as IProductResponce;
     })
   }
 

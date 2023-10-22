@@ -25,8 +25,8 @@ export class ItemCardComponent implements OnInit {
   }
   
   getRolls(){
-    return this.productService.getAllByCategory('roll').subscribe(data => {
-      this.products = data;
+    return this.productService.getProductsByCategoryFirebase('roll').then(data => {
+      this.products = data.products;
     })
   }
 

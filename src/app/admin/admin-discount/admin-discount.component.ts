@@ -17,7 +17,7 @@ export class AdminDiscountComponent {
   ) { }
   ngOnInit(): void {
     this.initDiscountForm()
-    this.getDiscount()
+    this.getDiscount();
   }
 
 
@@ -35,7 +35,7 @@ export class AdminDiscountComponent {
   public discountForm!: FormGroup;
   public discounts = this.dataService.discounts;
   public uploadPercent!: number;
-  public discountId!: number;
+  public discountId!: number | string;
 
   public isImgUploaded: boolean = false;
   
@@ -50,15 +50,16 @@ export class AdminDiscountComponent {
 
   //отримує масив знижок з db.json
   getDiscount() {
-    this.dataService.getAll().subscribe(data => {
-      this.discounts = data;
-
+    this.dataService.getAllFirebase().subscribe(data => {
+      this.discounts = data as IDiscountResponce[];
     })
   }
   //створює нову знижку і надсилає її в db.json
   addDiscount() {
-    this.dataService.create(this.discountForm.value).subscribe(() => {
+    this.getCurrentDate();
+    this.dataService.createFirebase(this.discountForm.value).then(() => {
       this.getDiscount();
+      this.clickAddBtn = false;
       this.isImgUploaded = false;
       this.uploadPercent = 0;
       this.discountForm.reset();
@@ -69,11 +70,8 @@ export class AdminDiscountComponent {
   //видаляє конкретну знижку з db.json
   clickDeleteCurrentDiscount(discount: IDiscountResponce): void {
     if (confirm("are you sure")) {
-      this.dataService.delete(discount.id).subscribe(() => {
-        const task = ref(this.storage, discount.imagePath);
-        deleteObject(task).then(() => {
-          console.log('File deleted');
-        })
+      this.dataService.deleteFirebase(discount.id as string).then(()=>{
+        console.log('File deleted');
         this.getDiscount();
       })
     }
@@ -106,7 +104,7 @@ export class AdminDiscountComponent {
 
   updateDiscount() {
     
-    this.dataService.update(this.discountForm.value, this.discountId).subscribe(() => {
+    this.dataService.updateFirebase(this.discountForm.value, this.discountId as string).then(() => {
       this.getDiscount();
       this.discountForm.reset();
       this.isUpdatePressed = false;

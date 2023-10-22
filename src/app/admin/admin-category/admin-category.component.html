@@ -3,7 +3,7 @@
         <input type="button" value="Додати категорію" class="addBtn" (click)="showAddMenu()">
     </div>
     <ng-container *ngIf="clickAddBtn; else elseTemplate">
-        <form class="add-category-form" [formGroup]="categoryForm">
+        <form class="add-category-form" [formGroup]="categoryForm"
             (ngSubmit)="isUpdatePressed?updateCategory():addCategory()">
             <div>
                 <input type="text" formControlName="name" name="name" class="text-input category" placeholder="*Назва">

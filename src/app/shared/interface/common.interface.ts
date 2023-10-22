@@ -1,12 +1,12 @@
 export interface IdiscountRequest{
-    date:any,
+    date:string,
     name:string,
     title:string,
     description:string,
     imagePath:string,
 }
 export interface IDiscountResponce extends IdiscountRequest{
-    id:number
+    id:number|string
 }
 
 export interface ICategoryRequest{
@@ -15,7 +15,7 @@ export interface ICategoryRequest{
     imagePath:string
 }
 export interface ICategoryResponce extends ICategoryRequest{
-    id:number
+    id:number | string
 }
 
 export interface IProductRequest{
@@ -29,7 +29,7 @@ export interface IProductRequest{
     count: number
 }
 export interface IProductResponce extends IProductRequest{
-    id:number
+    id:number|string
 }
 
 export interface ILogin{

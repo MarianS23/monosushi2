@@ -32,10 +32,10 @@ export class AdminCategoryComponent {
   public categoryForm!: FormGroup;
   public categories = this.categoryService.categories;
   public uploadPercent!: number;
-  public categoryId!: number;
+  public categoryId!: number | string;
 
   public isImgUploaded: boolean = false;
- 
+
   public clickAddBtn: boolean = false;
 
   public isUpdatePressed: boolean = false;
@@ -43,32 +43,30 @@ export class AdminCategoryComponent {
 
 
 
-//отримує масив  з db.json
+  //отримує масив  з db.json
   getCategories() {
-    this.categoryService.getAll().subscribe(data => {
-      this.categories = data
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.categories = data as ICategoryResponce[];
     })
-
   }
 
-  //створює нову знижку і надсилає її в db.json
+  // створює нову знижку і надсилає її в db.json
   addCategory() {
-    this.categoryService.create(this.categoryForm.value).subscribe(() => {
+    this.categoryService.createFirebase(this.categoryForm.value).then(() => {
       this.getCategories();
       this.isImgUploaded = false;
+      this.clickAddBtn = false;
       this.uploadPercent = 0;
       this.categoryForm.reset();
+
     })
   }
 
   //видаляє конкретну категорію з db.json
   clickDeleteCurrentCategory(category: ICategoryResponce): void {
     if (confirm("are you sure")) {
-      this.categoryService.delete(category.id).subscribe(() => {
-        const task = ref(this.storage, category.imagePath);
-        deleteObject(task).then(() => {
-          console.log('File deleted');
-        })
+      this.categoryService.deleteFirebase(category.id as string).then(() => {
+        console.log('File deleted');
         this.getCategories();
       })
     }
@@ -87,13 +85,13 @@ export class AdminCategoryComponent {
       path: category.path,
       imagePath: category.imagePath
     })
-    this.categoryId = category.id
+    this.categoryId = category.id as number;
     this.isUpdatePressed = true;
     this.isImgUploaded = true;
   }
 
   updateCategory() {
-    this.categoryService.update(this.categoryForm.value, this.categoryId).subscribe(() => {
+    this.categoryService.updateFirebase(this.categoryForm.value, this.categoryId as string).then(() => {
       this.getCategories();
       this.categoryForm.reset();
       this.isUpdatePressed = false;
@@ -104,7 +102,6 @@ export class AdminCategoryComponent {
 
   upload(event: any): void {
     const file = event.target.files[0];
-    console.log(file)
     this.uploaFile('images/category', file.name, file)
       .then(data => {
         this.categoryForm.patchValue({

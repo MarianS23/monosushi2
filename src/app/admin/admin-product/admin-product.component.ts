@@ -15,7 +15,7 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class AdminProductComponent {
   constructor(
     private productService: ProductService,
-    private categoryService:CategoryService,
+    private categoryService: CategoryService,
     private fb: FormBuilder,
     private storage: Storage
   ) { }
@@ -34,20 +34,20 @@ export class AdminProductComponent {
       ingredients: [null, Validators.required],
       weight: [null, Validators.required],
       price: [null, Validators.required],
-      imagePath:[null,Validators.required],
-      count:[1]
+      imagePath: [null, Validators.required],
+      count: [1, Validators.required]
     })
   }
 
 
-  
+
 
   public productForm!: FormGroup;
   public products = this.productService.products;
   public categories = this.categoryService.categories;
   public uploadPercent!: number;
-  public productID!: number;
-  public currentCategoryID:number = 0;
+  public productID!: string | number;
+  public currentCategoryID: number = 0;
 
   public isImgUploaded: boolean = false;
 
@@ -60,42 +60,52 @@ export class AdminProductComponent {
 
   //отримує масив знижок з db.json
   getProduct() {
-    this.productService.getAll().subscribe(data => {
-      this.products = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.products = data as IProductResponce[];
     })
   }
 
   getCategories() {
-    this.categoryService.getAll().subscribe(data => {
-      this.categories = data
+    // this.categoryService.getAll().subscribe(data => {
+    //   this.categories = data
+    //   this.productForm.patchValue({
+    //     category:this.categories[0].id
+    //   })
+    // })
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.categories = data as ICategoryResponce[];
       this.productForm.patchValue({
-        category:this.categories[0].id
+        category: this.categories[0].id
       })
     })
   }
   //створює нову знижку і надсилає її в db.json
   addProduct() {
-    console.log(this.productForm.value)
-    this.productService.create(this.productForm.value).subscribe(() => {
+    this.productService.createFirebase(this.productForm.value).then(() => {
       this.getProduct();
       this.isImgUploaded = false;
+      this.clickAddBtn = false;
       this.uploadPercent = 0;
       this.productForm.reset();
     })
 
   }
 
-  //видаляє конкретну знижку з db.json
+  //видаляє
   clickDeleteCurrent(product: IProductResponce): void {
     if (confirm("are you sure")) {
-      this.productService.delete(product.id).subscribe(() => {
-        const task = ref(this.storage, product.imagePath);
-        deleteObject(task).then(() => {
-          console.log('File deleted');
-        })
+      // this.productService.delete(product.id).subscribe(() => {
+      //   const task = ref(this.storage, product.imagePath);
+      //   deleteObject(task).then(() => {
+      //     console.log('File deleted');
+      //   })
+      this.productService.deleteFirebase(product.id as string).then(() => {
+        console.log('File deleted');
         this.getProduct();
       })
+
     }
+
   }
 
 
@@ -113,8 +123,8 @@ export class AdminProductComponent {
       ingredients: product.ingredients,
       weight: product.weight,
       price: product.price,
-      imagePath:product.imagePath,
-      count:1
+      imagePath: product.imagePath,
+      count: 1
     })
     this.productID = product.id;
     this.isUpdatePressed = true;
@@ -123,13 +133,13 @@ export class AdminProductComponent {
 
 
 
-  changeCategory(categoryElem:any):void{
+  changeCategory(categoryElem: any): void {
     this.currentCategoryID = categoryElem.value;
   }
 
 
   updateProduct() {
-    this.productService.update(this.productForm.value, this.productID).subscribe(() => {
+    this.productService.updateFirebase(this.productForm.value, this.productID as string).then(() => {
       this.getProduct();
       this.productForm.reset();
       this.isUpdatePressed = false;
@@ -196,16 +206,7 @@ export class AdminProductComponent {
 
 
 
-  // getCurrentDate(): string {
-  //   const date = new Date()
-  //   let hours = date.getHours();
-  //   let minutes = date.getMinutes();
-  //   let day = date.getDay();
-  //   let month = date.getMonth();
-  //   let year = date.getFullYear();
-  //   let currentDate = [hours, ':', minutes, ', ', day, '.', month, '.', year];
-  //   return currentDate.join('');
-  // }
+
 
 
 }
